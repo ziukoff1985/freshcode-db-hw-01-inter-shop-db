@@ -4,5 +4,5 @@ CREATE TABLE models (
     description TEXT,
     brand_id INT NOT NULL,
     PRIMARY KEY (id),
-    CONSTRAINT fk_models_brands FOREIGN KEY (brand_id) REFERENCES brands ON DELETE CASCADE
+    CONSTRAINT fk_models_brands FOREIGN KEY (brand_id) REFERENCES brands
 );
