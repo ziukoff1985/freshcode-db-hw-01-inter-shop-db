@@ -1,13 +1,12 @@
-DROP TABLE IF EXISTS items;
 CREATE TABLE items (
     id SERIAL,
     category_id INT NOT NULL,
     type_id INT NOT NULL,
     brand_id INT NOT NULL,
     model_id INT NOT NULL,
-    price NUMERIC(10, 2) NOT NULL CHECK (price > 0),
+    price NUMERIC(10, 2) NOT NULL CONSTRAINT positive_price CHECK (price > 0),
     store_id INT NOT NULL,
-    amount INT NOT NULL CHECK (amount >= 0) DEFAULT 0,
+    amount INT NOT NULL CONSTRAINT positive_or_zero_amount CHECK (amount >= 0) DEFAULT 0,
     PRIMARY KEY (id),
     CONSTRAINT fk_items_item_categories FOREIGN KEY (category_id) REFERENCES item_categories,
     CONSTRAINT fk_items_item_types FOREIGN KEY (type_id) REFERENCES item_types,
